@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +40,7 @@ Route::middleware(['auth', 'verified'])
         //nome della rotta: admin.dashboard
         Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
         //questa rotta mappa tutte le rotte in ProjectsController
-        Route::resources('projects', ProjectsController::class);
+        Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);;
     });
 
 
