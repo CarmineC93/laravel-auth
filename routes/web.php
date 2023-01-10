@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified'])
     ->name('admin.')
     //group per raggruppare rotte che stesse caratteristiche ed evitare di scriverle singolarmente
     ->group(function () {
+        Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
     });
 
 
