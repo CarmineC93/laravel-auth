@@ -27,4 +27,16 @@ Route::get('admin/', [DashboardController::class, 'index'])
     ->name('admin.dashboard');
 
 
+//rotta che rimanda a tutte le pagine e CRUD gestite da ProjectsController
+//middelware per la verifica di autenticazione
+Route::middleware(['auth', 'verified'])
+    // prefix per admin/.. nell'url del browser
+    ->prefix('admin')
+    //name per il nome della rotta
+    ->name('admin.')
+    //group per raggruppare rotte che stesse caratteristiche ed evitare di scriverle singolarmente
+    ->group(function () {
+    });
+
+
 require __DIR__ . '/auth.php';
