@@ -27,7 +27,7 @@ Route::get('admin/', [DashboardController::class, 'index'])
     ->name('admin.dashboard');
 
 
-//rotta che rimanda a tutte le pagine e CRUD gestite da ProjectsController
+//rotta che rimanda a tutte le pagine admin e CRUD gestite da ProjectsController
 //middelware per la verifica di autenticazione
 Route::middleware(['auth', 'verified'])
     // prefix per admin/.. nell'url del browser
@@ -36,7 +36,10 @@ Route::middleware(['auth', 'verified'])
     ->name('admin.')
     //group per raggruppare rotte che stesse caratteristiche ed evitare di scriverle singolarmente
     ->group(function () {
+        //nome della rotta: admin.dashboard
         Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
+        //questa rotta mappa tutte le rotte in ProjectsController
+        Route::resources('projects', ProjectsController::class);
     });
 
 
