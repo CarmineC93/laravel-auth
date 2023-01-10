@@ -10,5 +10,6 @@ class DashboardController extends Controller
     // funzione che rimanda alla pagina index
     public function index()
     {
+        return view('admin.dashboard');
     }
 }
