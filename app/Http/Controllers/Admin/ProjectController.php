@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use PhpParser\Node\Stmt\Return_;
 
 class ProjectController extends Controller
 {
@@ -40,9 +41,14 @@ class ProjectController extends Controller
     {
         $form_data = $request->all();
         $form_data['slug'] = Project::generateSlug($form_data['title']);
-        $post = new Project();
-        $post->fill($form_data);
-        $post->save();
+
+        // $post = new Project();
+        // $post->fill($form_data);
+        // $post->save();
+
+        // alternativa a fill()
+        $post = Project::create($form_data);
+        return redirect()->route('admin.projects.index');
     }
 
     /**
