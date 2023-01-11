@@ -43,19 +43,18 @@
                                         @csrf
                                         @method('DELETE')
 
-                                        <button class="btn btn-danger" type="submit">
+                                        <button class="btn btn-danger delete-btn" type="submit"
+                                            data-project-title="{{ $project->title }}">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
-
                                     </form>
-
                                 </td>
-
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
+        @include('partials.delete-modal')
     </div>
 @endsection
