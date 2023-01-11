@@ -24,7 +24,8 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            // indichiamo quali regole devono essere validate oppure 'title' =>'required|max:50|unique:projects'
+            'title' => ['required', 'max:150', 'unique:projects']
         ];
     }
 }

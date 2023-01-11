@@ -5,6 +5,19 @@
         <h2 class="text-center mt-3">Crea un nuovo progetto</h2>
         <div class="row justify-content-center">
             <div class="col-8">
+
+                {{-- mostro in pagina gli errori --}}
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+
                 <form action="{{ route('admin.projects.store') }}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
@@ -14,11 +27,11 @@
                         is-invalid
                         @enderror"
                             value="{{ old('title') }}">
-                        {{-- @error('title')
+                        @error('title')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
-                        @enderror --}}
+                        @enderror
                     </div>
 
                     <div class="form-group mb-3">
@@ -27,11 +40,11 @@
                             class="form-control @error('content')
                         is-invalid
                         @enderror">{{ old('content') }}</textarea>
-                        {{-- @error('content')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror --}}
+                        @error('content')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <button class="btn btn-success" type="submit">Salva</button>
