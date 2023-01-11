@@ -7,16 +7,7 @@
             <div class="col-8">
 
                 {{-- mostro in pagina gli errori --}}
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
+                @include('partials.errors')
 
                 <form action="{{ route('admin.projects.store') }}" method="POST">
                     @csrf
