@@ -56,7 +56,7 @@
                                 {{-- impostiamo sui link una classe dinamica in base alla rotta corrente --}}
                                 <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
-                                    {{-- <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> --}}
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
                                     Dashboard
                                 </a>
                             </li>
