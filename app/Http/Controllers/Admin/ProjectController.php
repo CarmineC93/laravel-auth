@@ -48,7 +48,7 @@ class ProjectController extends Controller
 
         // alternativa a fill()
         $post = Project::create($form_data);
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('message', 'Il tuo nuovo progetto è stato creato');
     }
 
     /**

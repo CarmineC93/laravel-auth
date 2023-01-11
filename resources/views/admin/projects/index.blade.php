@@ -10,6 +10,14 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-8">
+
+                {{-- messaggio per comunicare avvenuta creazione tramite funzione with() --}}
+                @if (session('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
+
                 <table class="table">
                     <thead>
                         <tr>
