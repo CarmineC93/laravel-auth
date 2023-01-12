@@ -28,4 +28,13 @@ class StoreProjectRequest extends FormRequest
             'title' => ['required', 'max:150', 'unique:projects']
         ];
     }
+
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'il titolo è richiesto!',
+            'description.required' => 'il contenuto della descrizione è richiesto!'
+        ];
+    }
 }

@@ -85,7 +85,7 @@ class ProjectController extends Controller
         $form_data = $request->all();
         $form_data['slug'] = Project::generateSlug($form_data['title']);
         $project->update($form_data);
-
+        // i doppi appici per il tempalte literal
         return redirect()->route('admin.projects.index')->with('message', "Hai aggiornato con successo $project->title");
     }
 
