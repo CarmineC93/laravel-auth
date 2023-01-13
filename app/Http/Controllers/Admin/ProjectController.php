@@ -94,8 +94,18 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $form_data = $request->all();
+        $form_data = $request->validated();
         $form_data['slug'] = Project::generateSlug($form_data['title']);
+
+        if ($request->hasFile('cover_image')) {
+            //se esiste un file precedente eliminarlo 
+            if ($project->cover_image) {
+                Storage::delete($project->cover_image);
+            }
+            $path = Storage::delete($project->cover_image);
+            $form_data['cover_image'] = $path;
+        }
+
         $project->update($form_data);
         // i doppi appici per il tempalte literal
         return redirect()->route('admin.projects.index')->with('message', "Hai aggiornato con successo $project->title");
