@@ -43,12 +43,6 @@ class ProjectController extends Controller
         $form_data = $request->validated();
         $form_data['slug'] = Project::generateSlug($form_data['title']);
 
-        // $post = new Project();
-        // $post->fill($form_data);
-        // $post->save();
-
-        // alternativa a fill()
-        $post = Project::create($form_data);
 
         //se c'è il file nel request si creerà una cartella nella quale andrà l'immagine in request, che verrà rinominata
         if ($request->hasFile('cover_image')) {
@@ -56,8 +50,15 @@ class ProjectController extends Controller
             $path = Storage::put('project_images', $request->cover_image);
             //salviamo poi il file ottenuto in form_data
             $form_data['cover_image'] = $path;
-            dd($form_data);
+            // dd($form_data);
         }
+
+
+        // $post = new Project();
+        // $post->fill($form_data);
+        // $post->save();
+        // alternativa a fill()
+        $post = Project::create($form_data);
 
         return redirect()->route('admin.projects.index')->with('message', 'Il tuo nuovo progetto è stato creato');
     }
