@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Stmt\Return_;
 
 class ProjectController extends Controller
@@ -48,6 +49,14 @@ class ProjectController extends Controller
 
         // alternativa a fill()
         $post = Project::create($form_data);
+
+        //se c'è il file nel request si creerà una cartella nella quale andrà l'immagine in request, che verrà rinominata
+        if ($request->hasFile('cover_image')) {
+            $path = Storage::put('project_images', $request->cover_image);
+            //salviamo poi il file ottenuto in form_data
+            $form_data['cover_image'] = $path;
+        }
+
         return redirect()->route('admin.projects.index')->with('message', 'Il tuo nuovo progetto è stato creato');
     }
 
