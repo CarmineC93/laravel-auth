@@ -29,6 +29,14 @@
                         @foreach ($projects as $project)
                             <tr>
                                 <th scope="row">{{ $project->title }}</th>
+
+                                <td>
+                                    @if ($project->cover_image)
+                                        <img src="{{ asset('storage/' . $project->cover_image) }}" alt="project cover">
+                                    @else
+                                    @endif
+                                </td>
+
                                 <td>
                                     <a class="btn btn-success" href="{{ route('admin.projects.show', $project->slug) }}">
                                         <i class="fa-solid fa-eye"></i>

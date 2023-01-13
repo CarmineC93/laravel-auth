@@ -9,5 +9,15 @@
             <p>{{ $project->slug }}</p>
         </div>
         <p class="mt-3">{{ $project->description }}</p>
+
+        <div class="text-center">
+            @if ($project->cover_image)
+                <img src="{{ asset('storage/' . $project->cover_image) }}" alt="project cover">
+            @else
+                <div class="w-50 bg-secondary py-4 text-center">
+                    Nessun immagine
+                </div>
+            @endif
+        </div>
     </div>
 @endsection

@@ -52,9 +52,11 @@ class ProjectController extends Controller
 
         //se c'è il file nel request si creerà una cartella nella quale andrà l'immagine in request, che verrà rinominata
         if ($request->hasFile('cover_image')) {
+
             $path = Storage::put('project_images', $request->cover_image);
             //salviamo poi il file ottenuto in form_data
             $form_data['cover_image'] = $path;
+            dd($form_data);
         }
 
         return redirect()->route('admin.projects.index')->with('message', 'Il tuo nuovo progetto è stato creato');
