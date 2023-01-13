@@ -5,6 +5,8 @@ import.meta.glob([
     '../img/**'
 ]);
 
+//---------FUNZIONALITA' DI RICHIESTA DI SICUREZZA AL DELETE--------------
+
 //prendiamo tutti i bottoni con la classe delete-btn
 const deleteBtns = document.querySelectorAll(".delete-btn");
 
@@ -30,3 +32,20 @@ deleteBtns.forEach((btn)=>{
 });
 
 
+//---------FUNZIONALITA' DI AGGIORNAMENTO ANTEPRIMA IMMAGINE--------------
+
+const coverImageInput = document.getElementById("cover_image");
+const imagePreview = document.getElementById("image_preview");
+
+if (coverImageInput && imagePreview) {
+    coverImageInput.addEventListener("change", function () {
+        const uploadedFile = this.files[0];
+        if (uploadedFile) {
+            const reader = new FileReader();
+            reader.addEventListener("load", function () {
+                imagePreview.src = reader.result;
+            });
+            reader.readAsDataURL(uploadedFile);
+        }
+    });
+}
