@@ -26,7 +26,7 @@
                         <label for="cover_image">Immagine</label>
                         <input type="file" name="cover_image" id="cover_image" class="form-control">
 
-                        {{-- Preview dell'immagine esistente --}}
+                        {{-- anteprima immagine che si aggiorna tramit attributo id colllegato ad app.js --}}
                         <div class="mt-3">
                             <img id="image_preview" src="{{ asset('storage/' . $project->cover_image) }}"
                                 alt="{{ 'Cover image di ' . $project->title }}" style="max-height: 200px">

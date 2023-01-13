@@ -40,6 +40,11 @@
                         @enderror
                     </div>
 
+                    {{-- anteprima immagine che si aggiorna tramit attributo id colllegato ad app.js --}}
+                    <div class="mt-3">
+                        <img id="image_preview" src="" alt="" style="max-height: 200px">
+                    </div>
+
                     <div class="form-group mb-3">
                         <label for="content">Descrizione</label>
                         <textarea name="content" id="content" rows="10"
