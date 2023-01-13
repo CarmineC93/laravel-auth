@@ -9,7 +9,7 @@
                 {{-- mostro in pagina gli errori --}}
                 @include('partials.errors')
 
-                <form action="{{ route('admin.projects.store') }}" method="POST">
+                <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-3">
                         <label for="title">Titolo</label>
@@ -23,6 +23,12 @@
                                 {{ $message }}
                             </div>
                         @enderror
+                    </div>
+
+
+                    <div class="form-group mb-3">
+                        <label for="cover_image">Immagine</label>
+                        <input type="file" name="cover_image" id="cover_image" class="form-control">
                     </div>
 
                     <div class="form-group mb-3">
